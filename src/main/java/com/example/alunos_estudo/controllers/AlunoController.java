@@ -18,6 +18,8 @@ import com.example.alunos_estudo.dto.AlunoResponse;
 import com.example.alunos_estudo.dto.MatriculaDTO;
 import com.example.alunos_estudo.services.AlunoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
@@ -28,7 +30,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<AlunoResponse> salvar(@RequestBody AlunoRequest request) {
+    public ResponseEntity<AlunoResponse> salvar(@Valid @RequestBody AlunoRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(alunoService.salvar(request));
     }
 
